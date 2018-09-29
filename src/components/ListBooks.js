@@ -20,6 +20,7 @@ class ListBooks extends Component {
   ]
 
   render() {
+    const { books } = this.props
     return(
       <div className="list-books">
         <div className="list-books-title">
@@ -27,11 +28,16 @@ class ListBooks extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            {this.shelves.map((shelf) => (
-              <BookShelf
-                shelf={shelf}
-                books={this.props.books} />
-              )
+            {this.shelves.map((shelf) => {
+              const bookSet = books.filter((book) => book.shelf === shelf.id)
+
+              return (
+                <BookShelf
+                  shelf={shelf}
+                  books={bookSet}
+                  shelves={this.shelves} />
+                )
+              }
             )}
           </div>
         </div>
