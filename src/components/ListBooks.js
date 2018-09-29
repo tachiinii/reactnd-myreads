@@ -3,6 +3,22 @@ import BookShelf from './BookShelf'
 import SearchLink from './SearchLink'
 
 class ListBooks extends Component {
+
+  shelves = [
+    {
+      id: 'currentlyReading',
+      title: 'Currently Reading',
+    },
+    {
+      id: 'wantToRead',
+      title: 'Want to Read',
+    },
+    {
+      id: 'read',
+      title: 'Read',
+    },
+  ]
+
   render() {
     return(
       <div className="list-books">
@@ -11,9 +27,12 @@ class ListBooks extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <BookShelf />
-            <BookShelf />
-            <BookShelf />
+            {this.shelves.map((shelf) => (
+              <BookShelf
+                shelf={shelf}
+                books={this.props.books} />
+              )
+            )}
           </div>
         </div>
         <SearchLink />
