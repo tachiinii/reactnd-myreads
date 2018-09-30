@@ -2,13 +2,20 @@ import React, { Component } from 'react'
 
 class BookShelfChanger extends Component {
   render() {
+    const { bookId, bookShelf, shelves } = this.props
+
     return(
       <div className="book-shelf-changer">
-        <select>
+        <select defaultValue={bookShelf}>
           <option value="move" disabled>Move to...</option>
-          <option value="currentlyReading">Currently Reading</option>
-          <option value="wantToRead">Want to Read</option>
-          <option value="read">Read</option>
+          {shelves.map((shelf, index) => (
+            <option
+              value={shelf.id}
+              key={index}
+              >
+              {shelf.title}
+            </option>
+          ))}
           <option value="none">None</option>
         </select>
       </div>
