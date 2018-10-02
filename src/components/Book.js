@@ -8,9 +8,6 @@ class Book extends Component {
     return (
       <div className="book">
         <BookTop
-          imageURL={book.imageLinks.thumbnail}
-          bookId={book.id}
-          bookShelf={book.shelf}
           book={book}
           shelves={shelves}
           onChangeShelf={onChangeShelf}
