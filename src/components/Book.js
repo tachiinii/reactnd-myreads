@@ -3,7 +3,7 @@ import BookTop from './BookTop'
 
 class Book extends Component {
   render() {
-    const { book, shelves } = this.props
+    const { book, shelves, onChangeShelf } = this.props
 
     return (
       <div className="book">
@@ -11,7 +11,10 @@ class Book extends Component {
           imageURL={book.imageLinks.thumbnail}
           bookId={book.id}
           bookShelf={book.shelf}
-          shelves={shelves} />
+          book={book}
+          shelves={shelves}
+          onChangeShelf={onChangeShelf}
+         />
         <div className="book-title">{book.title}</div>
         <div className="book-authors">{book.authors}</div>
       </div>
