@@ -16,6 +16,7 @@ class BooksApp extends React.Component {
         this.setState(() => ({
           books
         }))
+        // TODO: remove debugging output
         console.log('API: ', books)
       })
   }
@@ -38,7 +39,7 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         <Route path='/search' render={() => (
-          <SearchBooks />
+          <SearchBooks onChangeShelf={this.changeBookShelf} />
         )} />
 
         <Route exact path='/' render={() => (
