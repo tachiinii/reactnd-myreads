@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 class BookShelfChanger extends Component {
   render() {
     const { book, shelves, onChangeShelf } = this.props
-    console.log('BookShelfChanger book: ', book)
 
     return(
       <div className="book-shelf-changer">

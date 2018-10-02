@@ -28,7 +28,7 @@ class BooksApp extends React.Component {
 
         books[index].shelf = newShelf
 
-        this.setState(() => {
+        this.setState({
           books
         })
       })
