@@ -4,23 +4,8 @@ import SearchLink from './SearchLink'
 
 class ListBooks extends Component {
 
-  shelves = [
-    {
-      id: 'currentlyReading',
-      title: 'Currently Reading',
-    },
-    {
-      id: 'wantToRead',
-      title: 'Want to Read',
-    },
-    {
-      id: 'read',
-      title: 'Read',
-    },
-  ]
-
   render() {
-    const { books, onChangeShelf } = this.props
+    const { books, onChangeShelf, shelves } = this.props
     return(
       <div className="list-books">
         <div className="list-books-title">
@@ -28,14 +13,14 @@ class ListBooks extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            {this.shelves.map((shelf) => {
+            {shelves.map((shelf) => {
               const bookSet = books.filter((book) => book.shelf === shelf.id)
 
               return (
                 <BookShelf
                   shelf={shelf}
                   books={bookSet}
-                  shelves={this.shelves}
+                  shelves={shelves}
                   key={shelf.id}
                   onChangeShelf={onChangeShelf} />
                 )

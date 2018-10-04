@@ -6,29 +6,36 @@ import * as BooksAPI from '../BooksAPI'
 class SearchBooks extends Component {
 
   state = {
-    query: '',
-    books: [],
+    results: [],
   }
 
   searchBooks = (query) => {
-    BooksAPI.search(query)
-      .then((books) => {
-        this.setState(() => ({
-          books
-        }))
-        // TODO: remove debugging output
-        console.log('API: ', books)
-      })
+    if (query) {
+      BooksAPI.search(query)
+        .then((results) => {
+          if ('error' in results)
+            results = []
+          this.setState(() => ({
+            results
+          }))
+        })
     }
+    else {
+      this.setState({ results: [] })
+    }
+  }
 
   render() {
     return(
       <div className="search-books">
         <SearchBooksForm
-          query={this.state.query}
           onSearchInput={this.searchBooks}
         />
-        <SearchBooksResults />
+        <SearchBooksResults
+          books={this.state.results}
+          shelves={this.props.shelves}
+          onChangeShelf={this.props.onChangeShelf}
+        />
       </div>
     )
   }

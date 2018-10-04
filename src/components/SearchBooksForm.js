@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 class SearchBooksForm extends Component {
 
   render() {
-    const { query, onSearchInput } = this.props
+    const { onSearchInput } = this.props
 
     return(
       <div className="search-books-bar">

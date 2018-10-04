@@ -8,8 +8,10 @@ class BookTop extends Component {
 
     return (
       <div className="book-top">
-        <BookCover
-          imageURL={book.imageLinks.thumbnail} />
+        {typeof book.imageLinks !== 'undefined' && (
+          <BookCover
+            imageURL={book.imageLinks.thumbnail}
+          />)}
         <BookShelfChanger
           book={book}
           shelves={shelves}

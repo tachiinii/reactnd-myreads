@@ -10,6 +10,21 @@ class BooksApp extends React.Component {
     books: [],
   }
 
+  shelves = [
+    {
+      id: 'currentlyReading',
+      title: 'Currently Reading',
+    },
+    {
+      id: 'wantToRead',
+      title: 'Want to Read',
+    },
+    {
+      id: 'read',
+      title: 'Read',
+    },
+  ]
+
   componentDidMount() {
     BooksAPI.getAll()
       .then((books) => {
@@ -27,7 +42,13 @@ class BooksApp extends React.Component {
         const books = this.state.books
         const index = books.findIndex((book) => book.id === bookToUpdate.id)
 
-        books[index].shelf = newShelf
+        if (index === -1) {
+          bookToUpdate.shelf = newShelf
+          books.push(bookToUpdate)
+        }
+        else {
+          books[index].shelf = newShelf
+        }
 
         this.setState({
           books
@@ -39,12 +60,16 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         <Route path='/search' render={() => (
-          <SearchBooks onChangeShelf={this.changeBookShelf} />
+          <SearchBooks
+            shelves={this.shelves}
+            onChangeShelf={this.changeBookShelf}
+          />
         )} />
 
         <Route exact path='/' render={() => (
           <ListBooks
             books={this.state.books}
+            shelves={this.shelves}
             onChangeShelf={this.changeBookShelf}
           />
         )} />
