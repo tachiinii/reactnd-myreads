@@ -1,7 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component, createElement } from 'react'
 import BookTop from './BookTop'
 
 class Book extends Component {
+
+  getAuthors = (authors) => {
+    return (typeof authors === 'undefined')
+      ? createElement('em', null, '(Authors not available)')
+      : authors.join(', ')
+  }
+
   render() {
     const { book, shelves, onChangeShelf } = this.props
 
@@ -13,7 +20,7 @@ class Book extends Component {
           onChangeShelf={onChangeShelf}
          />
         <div className="book-title">{book.title}</div>
-        <div className="book-authors">{book.authors}</div>
+        <div className="book-authors">{this.getAuthors(book.authors)}</div>
       </div>
     )
   }

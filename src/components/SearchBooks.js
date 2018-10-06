@@ -11,7 +11,7 @@ class SearchBooks extends Component {
 
   setBookShelves = (results, shelved) => {
     return results.map((result) => {
-      const index = shelved.findIndex((book) => book.id === result.id)
+      const index = shelved.findIndex(book => book.id === result.id)
       if (index !== -1)
         result.shelf = shelved[index].shelf
       return (result)
@@ -27,9 +27,7 @@ class SearchBooks extends Component {
           results = ('error' in results)
             ? []
             : this.setBookShelves(results, shelvedBooks)
-          this.setState(() => ({
-            results
-          }))
+          this.setState(() => ({ results }))
         })
     }
     else {
