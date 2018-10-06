@@ -3,7 +3,7 @@ import BookShelf from './BookShelf'
 import SearchLink from './SearchLink'
 
 const ListBooks = props => {
-  const { books, onChangeShelf, shelves } = this.props
+  const { books, onChangeShelf, shelves } = props
   return(
     <div className="list-books">
       <div className="list-books-title">
