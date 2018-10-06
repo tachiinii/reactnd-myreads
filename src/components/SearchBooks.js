@@ -10,11 +10,22 @@ class SearchBooks extends Component {
   }
 
   searchBooks = (query) => {
+    const { shelvedBooks } = this.props
+
     if (query) {
       BooksAPI.search(query)
         .then((results) => {
-          if ('error' in results)
+          if ('error' in results) {
             results = []
+          }
+          else {
+            results.map((result) => {
+              const index = shelvedBooks.findIndex((book) => book.id === result.id)
+              if (index !== -1)
+                result.shelf = shelvedBooks[index].shelf
+              return (result)
+            })
+          }
           this.setState(() => ({
             results
           }))
