@@ -9,23 +9,24 @@ class SearchBooks extends Component {
     results: [],
   }
 
+  setBookShelves = (results, shelved) => {
+    return results.map((result) => {
+      const index = shelved.findIndex((book) => book.id === result.id)
+      if (index !== -1)
+        result.shelf = shelved[index].shelf
+      return (result)
+    })
+  }
+
   searchBooks = (query) => {
     const { shelvedBooks } = this.props
 
     if (query) {
       BooksAPI.search(query)
         .then((results) => {
-          if ('error' in results) {
-            results = []
-          }
-          else {
-            results.map((result) => {
-              const index = shelvedBooks.findIndex((book) => book.id === result.id)
-              if (index !== -1)
-                result.shelf = shelvedBooks[index].shelf
-              return (result)
-            })
-          }
+          results = ('error' in results)
+            ? []
+            : this.setBookShelves(results, shelvedBooks)
           this.setState(() => ({
             results
           }))
