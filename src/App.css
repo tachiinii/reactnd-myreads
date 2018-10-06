@@ -168,6 +168,7 @@ body, .app {
   background: #eee;
   width: 128px;
   height: 188px;
+  background-image: url('./icons/cover-unavailable.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
