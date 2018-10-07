@@ -59,11 +59,14 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        <Route path='/search' render={() => (
+        <Route path='/search' render={({ history }) => (
           <SearchBooks
             shelvedBooks={this.state.books}
             shelves={this.shelves}
-            onChangeShelf={this.changeBookShelf}
+            onChangeShelf={(book, newShelf) => {
+              this.changeBookShelf(book, newShelf)
+              history.push('/')
+            }}
           />
         )} />
 
