@@ -7,7 +7,7 @@ const SearchBooksResults = props => {
 
   return(
     <div className="search-books-results">
-      <SearchSummary />
+      <SearchSummary resultCount={books.length} />
       <ol className="books-grid">
       {books.map((book) => (
         <li key={book.id}>

@@ -21,14 +21,14 @@ class SearchBooks extends Component {
 
   searchBooks = (query) => {
     const { shelvedBooks } = this.props
-
+    this.setState(() => ({ query }))
     if (query) {
       BooksAPI.search(query)
         .then((results) => {
           results = ('error' in results)
             ? []
             : this.setBookShelves(results, shelvedBooks)
-          this.setState(() => ({ query, results }))
+          this.setState(() => ({ results }))
         })
     }
     else {

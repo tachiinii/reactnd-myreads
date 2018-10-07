@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 
-class SearchSummary extends Component {
-  render() {
-    return (
-      <div className='search-books-summary'>
-        Search results
-      </div>
-    )
-  }
+const SearchSummary = props => {
+  return (
+    <div className='search-books-summary'>
+      Found {props.resultCount} results
+    </div>
+  )
 }
 
 export default SearchSummary
