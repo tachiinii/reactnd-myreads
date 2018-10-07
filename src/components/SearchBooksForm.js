@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 const SearchBooksForm = props => (
   <div className="search-books-bar">
@@ -18,5 +19,10 @@ const SearchBooksForm = props => (
     </div>
   </div>
 )
+
+SearchBooksForm.propTypes = {
+  query: PropTypes.string.isRequired,
+  onSearchInput: PropTypes.func.isRequired,
+}
 
 export default SearchBooksForm

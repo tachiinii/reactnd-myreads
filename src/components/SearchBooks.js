@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import SearchBooksForm from './SearchBooksForm'
 import SearchBooksResults from './SearchBooksResults'
 import * as BooksAPI from '../BooksAPI'
@@ -53,6 +54,12 @@ class SearchBooks extends Component {
       </div>
     )
   }
+}
+
+SearchBooks.propTypes = {
+  books: PropTypes.array.isRequired,
+  shelves: PropTypes.array.isRequired,
+  onChangeShelf: PropTypes.func.isRequired,
 }
 
 export default SearchBooks

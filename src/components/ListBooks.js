@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import BookShelf from './BookShelf'
 import SearchLink from './SearchLink'
 
@@ -29,6 +30,12 @@ const ListBooks = props => {
       <SearchLink />
     </div>
   )
+}
+
+ListBooks.propTypes = {
+  books: PropTypes.array.isRequired,
+  shelves: PropTypes.array.isRequired,
+  onChangeShelf: PropTypes.func.isRequired,
 }
 
 export default ListBooks

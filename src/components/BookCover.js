@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const BookCover = props => (
   <div
@@ -8,5 +9,9 @@ const BookCover = props => (
     }}>
   </div>
 )
+
+BookCover.propTypes = {
+  imageURL: PropTypes.string.isRequired,
+}
 
 export default BookCover

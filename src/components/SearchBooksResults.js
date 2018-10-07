@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Book from './Book'
 import SearchSummary from './SearchSummary'
 
@@ -21,6 +22,12 @@ const SearchBooksResults = props => {
       </ol>
     </div>
   )
+}
+
+SearchBooksResults.propTypes = {
+  books: PropTypes.array.isRequired,
+  shelves: PropTypes.array.isRequired,
+  onChangeShelf: PropTypes.func.isRequired,
 }
 
 export default SearchBooksResults
