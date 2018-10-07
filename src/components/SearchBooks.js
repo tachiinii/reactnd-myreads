@@ -6,6 +6,7 @@ import * as BooksAPI from '../BooksAPI'
 class SearchBooks extends Component {
 
   state = {
+    query: '',
     results: [],
   }
 
@@ -27,11 +28,11 @@ class SearchBooks extends Component {
           results = ('error' in results)
             ? []
             : this.setBookShelves(results, shelvedBooks)
-          this.setState(() => ({ results }))
+          this.setState(() => ({ query, results }))
         })
     }
     else {
-      this.setState({ results: [] })
+      this.setState({ query: '', results: [] })
     }
   }
 
@@ -39,13 +40,16 @@ class SearchBooks extends Component {
     return(
       <div className="search-books">
         <SearchBooksForm
+          query={this.state.query}
           onSearchInput={this.searchBooks}
         />
-        <SearchBooksResults
-          books={this.state.results}
-          shelves={this.props.shelves}
-          onChangeShelf={this.props.onChangeShelf}
-        />
+        {this.state.query && (
+          <SearchBooksResults
+            books={this.state.results}
+            shelves={this.props.shelves}
+            onChangeShelf={this.props.onChangeShelf}
+          />
+        )}
       </div>
     )
   }

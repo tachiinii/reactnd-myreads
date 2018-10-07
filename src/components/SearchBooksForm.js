@@ -12,6 +12,7 @@ const SearchBooksForm = props => (
       <input
         type="text"
         placeholder="Search by title or author"
+        value={props.query}
         onChange={(e) => props.onSearchInput(e.target.value)}
       />
     </div>
