@@ -4,14 +4,14 @@ import PropTypes from 'prop-types'
 const BookCover = props => (
   <div
     className="book-cover"
-    style={{
-      backgroundImage: 'url(' + props.imageURL + ')'
+    style={ props.imageLinks && {
+      backgroundImage: 'url(' + props.imageLinks.thumbnail + ')'
     }}>
   </div>
 )
 
 BookCover.propTypes = {
-  imageURL: PropTypes.string.isRequired,
+ imageURL: PropTypes.object,
 }
 
 export default BookCover

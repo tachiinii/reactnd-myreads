@@ -8,10 +8,9 @@ const BookTop = props => {
 
   return (
     <div className="book-top">
-      {typeof book.imageLinks !== 'undefined' && (
-        <BookCover
-          imageURL={book.imageLinks.thumbnail}
-        />)}
+      <BookCover
+        imageLinks={book.imageLinks}
+      />
       <BookShelfChanger
         book={book}
         shelves={shelves}
