@@ -28,7 +28,7 @@ const BookShelf = props => {
 
 BookShelf.propTypes = {
   books: PropTypes.array.isRequired,
-  shelf: PropTypes.string.isRequired,
+  shelf: PropTypes.object.isRequired,
   shelves: PropTypes.array.isRequired,
   onChangeShelf: PropTypes.func.isRequired,
 }

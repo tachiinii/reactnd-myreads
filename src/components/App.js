@@ -31,8 +31,6 @@ class BooksApp extends React.Component {
         this.setState(() => ({
           books
         }))
-        // TODO: remove debugging output
-        console.log('API: ', books)
       })
   }
 
